@@ -33,7 +33,7 @@ def tcp_server() :
                     sock_client.send(i.encode())
                 sock_client.send("\r\n".encode())
         except Exception as error:
-            print("[WARNING]", error)
+            print("[ERROR]", error)
             print("From Client : " + request)
             print("Client IP : ", client_address)
             print("Response : ", response)
