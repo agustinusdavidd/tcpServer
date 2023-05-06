@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Detail Menu 1</title>
+    <link rel="icon" type="image/x-icon" href="favicon.webp">
     <style>
 
       .menu-detail img {
@@ -20,7 +21,24 @@
         text-align: left;
         margin-bottom: 5px;
       }
+      
+      .button {
+        border: 2px solid black;
+        color: black;
+        background-color: white;
+        width: fit-content;
+        min-height: 24px;
+        margin: 4px 2px;
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+        transition-duration: 0.2s;
+      }
 
+      .button:hover {
+        background-color: black;
+        color: white;
+      }
     </style>
   </head>
   <body>
@@ -58,7 +76,7 @@
     </div>
     <div class="menu-detail">
         <a href="index.html">
-          <button>Kembali ke Menu Utama</button>
+          <button class="button">Kembali ke Menu Utama</button>
         </a>
       </div>
   </body>
