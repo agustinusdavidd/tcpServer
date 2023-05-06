@@ -71,23 +71,25 @@ def handle_request(request) :
             
         else:
             with open(fileReq, 'r') as requestedFile: # membuka file yang diminta
-                content_file = requestedFile.read()
+                content_file = requestedFile.readlines()
                 response_line = "HTTP/1.1 200 OK\r\n"
                 content_type = "Content-Type: " + type + "\r\n\r\n" # header untuk memberi tahu client tipe file yang akan diterima
                 content_length = ""
                 message_body = content_file
     
-    except FileNotFoundError: # error handling apabila file yang diminta tidak ditemmukan
+    except FileNotFoundError as error: # error handling apabila file yang diminta tidak ditemmukan
         response_line = "HTTP/1.1 404 Not Found\r\n"
         content_type = "Content-Type: text/html\r\n\r\n"
         message_body = "<html><body><h1>404 Not Found</h1></body></html>"
         content_length = ""
-    except Exception: #oleh nadine
+        print(error)
+    except Exception as error: #oleh nadine
         response_line = "HTTP/1.1 403 Bad Request\r\n"
         content_type = "Content-Type: text/html\r\n\r\n"
         message_body = "<html><body><h1>403 Bad Request</h1></body></html>"
         content_length = ""
         print(request.split())
+        print("\n",error)
     #oleh nadine
     response = []
     response.append(flag)
