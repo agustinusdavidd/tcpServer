@@ -31,6 +31,7 @@ def tcp_server() :
             else:
                 for i in response[2]:
                     sock_client.send(i.encode())
+                sock_client.send("\r\n".encode())
         except Exception as error:
             print("[WARNING]", error)
             print("From Client : " + request)
@@ -52,9 +53,9 @@ def handle_request(request) :
         splitRequest = request.split()#.split("/")[-1]    } modified by nadine
         fileReq = splitRequest[1]                        # } mendapatkan nama file yang diminta oleh client
         fileReq = fileReq[1::]                      # } menghapus / di bagian awal file
-        type = contentType(fileReq)
         if fileReq == "":
             fileReq = "index.html"
+        type = contentType(fileReq)
     #modified by nadine
         if type.split('/')[0] != "text":
             with open(fileReq, 'rb') as requestedFile: # membuka file yang diminta
