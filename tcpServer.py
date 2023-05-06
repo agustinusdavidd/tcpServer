@@ -50,9 +50,9 @@ def handle_request(request) :
     #    fileReq = "web_page.html"
     flag = "text"
     try:
-        splitRequest = request.split()#.split("/")[-1]    } modified by nadine
-        fileReq = splitRequest[1]                        # } mendapatkan nama file yang diminta oleh client
-        fileReq = fileReq[1::]                      # } menghapus / di bagian awal file
+        splitRequest = request.split()  #["GET","/bla.html"]            #.split("/")[-1]    } modified by nadine
+        fileReq = splitRequest[1]       #"/bla.html"                 # } mendapatkan nama file yang diminta oleh client
+        fileReq = fileReq[1::]          #"bla.html"           # } menghapus / di bagian awal file
         if fileReq == "":
             fileReq = "index.html"
         type = contentType(fileReq)
@@ -84,9 +84,9 @@ def handle_request(request) :
         content_length = ""
         print(error)
     except Exception as error: #oleh nadine
-        response_line = "HTTP/1.1 403 Bad Request\r\n"
+        response_line = "HTTP/1.1 400 Bad Request\r\n"
         content_type = "Content-Type: text/html\r\n\r\n"
-        message_body = "<html><body><h1>403 Bad Request</h1></body></html>"
+        message_body = "<html><body><h1>400 Bad Request</h1></body></html>"
         content_length = ""
         print(request.split())
         print("\n",error)
