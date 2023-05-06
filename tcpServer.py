@@ -2,7 +2,7 @@ import socket
 #oleh david
 def tcp_server() :
     SERVER_HOST = "127.0.0.1"
-    SERVER_PORT = 80
+    SERVER_PORT = 8081
 
     sock_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock_server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -22,14 +22,20 @@ def tcp_server() :
         response = handle_request(request) #modified by nadine
         #response = "From Server : " + request
         #sock_client.send(response.encode()) #modified by nadine
-        for i in response[1]: #modified by nadine
-            sock_client.send(i.encode())
-        if response[0] == "media":
-            for i in response[2]:
-                sock_client.send(i)
-        else:
-            for i in response[2]:
+        try:
+            for i in response[1]:   #modified by nadine
                 sock_client.send(i.encode())
+            if response[0] == "media":
+                for i in response[2]:
+                    sock_client.send(i)
+            else:
+                for i in response[2]:
+                    sock_client.send(i.encode())
+        except Exception as error:
+            print("[WARNING]", error)
+            print("From Client : " + request)
+            print("Client IP : ", client_address)
+            print("Response : ", response)
         sock_client.close()
 
     sock_server.close()
@@ -41,13 +47,12 @@ def handle_request(request) :
 
     #if fileReq == "":
     #    fileReq = "web_page.html"
-
+    flag = "text"
     try:
         splitRequest = request.split()#.split("/")[-1]    } modified by nadine
         fileReq = splitRequest[1]                        # } mendapatkan nama file yang diminta oleh client
         fileReq = fileReq[1::]                      # } menghapus / di bagian awal file
         type = contentType(fileReq)
-        flag = "text"
         if fileReq == "":
             fileReq = "index.html"
     #modified by nadine
