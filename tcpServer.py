@@ -113,6 +113,8 @@ def contentType(file) :
         return "image/webp"
     elif type=="ico":
         return "image/x-icon"
+    elif type =="css":
+        return "text/css"
     else:
         return "text/plain"
 
