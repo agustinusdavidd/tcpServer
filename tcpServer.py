@@ -49,7 +49,7 @@ def handle_request(request) :
         type = contentType(fileReq)
         flag = "text"
         if fileReq == "":
-            fileReq = "web_page.html"
+            fileReq = "index.html"
     #modified by nadine
         if type.split('/')[0] != "text":
             with open(fileReq, 'rb') as requestedFile: # membuka file yang diminta
