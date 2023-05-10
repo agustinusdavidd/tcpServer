@@ -80,7 +80,9 @@ def handle_request(request) :
     except FileNotFoundError as error: # error handling apabila file yang diminta tidak ditemmukan
         response_line = "HTTP/1.1 404 Not Found\r\n"
         content_type = "Content-Type: text/html\r\n\r\n"
-        message_body = "<html><body><h1>404 Not Found</h1></body></html>"
+        with open("Error404.html", 'r') as requestedFile:
+            message_body = requestedFile.readlines()
+        #message_body = "<html><body><h1>404 Not Found</h1></body></html>"
         content_length = ""
         print(error)
     except Exception as error: #oleh nadine

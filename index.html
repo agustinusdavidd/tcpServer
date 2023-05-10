@@ -21,6 +21,30 @@
         height: 120px;
         object-fit: cover;
       }
+      
+      .menu-list {
+        width: 50%;
+        margin: auto;
+        padding-left: 12%;
+      }
+
+      .button {
+        border: 2px solid red;
+        color: black;
+        background-color: white;
+        width: fit-content;
+        min-height: 24px;
+        margin: 4px 2px;
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+        transition-duration: 0.2s;
+      }
+
+      .button:hover {
+        background-color: red;
+        color: white;
+      }
     </style>
   </head>
   <body>
@@ -70,7 +94,11 @@
           <p>Menu 6</p>
         </div>
       </a>
-      
+      <div class="menu-list">
+        <a href="hehe.html">
+          <button class="button">Click for 404 error xd</button>
+        </a>
+      </div>
     </div>
   </body>
 </html>
