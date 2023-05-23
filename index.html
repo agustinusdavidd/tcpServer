@@ -21,11 +21,151 @@
         height: 120px;
         object-fit: cover;
       }
+
+      .search-container {
+        display: flex;
+        text-align: right;
+      }
+
+      #new
+      .header{
+        height: 66px;
+        background-color: #fff;
+        box-shadow: 0 1px 5px 0 rgba(0,0,0,.05);
+        position: relative;
+        width: 100%;
+        top: 0;
+        z-index: 12;
+        text-align: center;
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        align-items: center;
+        -webkit-align-items: center;
+      }
+
+      .lr-padding {
+        padding-left: 2%;
+        padding-right: 2%;
+      }
+      .head-nav {
+        -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+      }
+
+      .head-search
+      .search {
+        width: 350px;
+        margin: 10px 8px;
+        height: 40px;
+        position: relative;
+        transition: all 200ms ease-out;
+        display: inline-block;
+        float: none;
+        text-align: right;
+      }
+
+      .head-search-form {
+        background-color: #eef0f3;
+        border-radius: 32px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding: 0 5px;
+      }
+
+      .head-search-submit {
+        width: 36px;
+        height: 36px;
+        background-color: inherit;
+        border: 0;
+        padding: 0;
+        font-size: 9px;
+        color: #bdc2ce;
+      }
+
+      .head-search-area {
+        font-size: 17px;
+        height: 40px;
+        color: #a6b0b7;
+        text-align: left;
+        width: 100%;
+        background-color: initial;
+        border: none!important;
+      }
+
+      .header-right {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex: 1 1 0;
+        -ms-flex: 1 1 0;
+        flex: 1 1 0;
+        -ms-flex-pack: end;
+        -webkit-justify-content: flex-end;
+        justify-content: flex-end;
+        align-items: center;
+        -webkit-align-items: center;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .fa {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: var(--fa-display,inline-block);
+        font-style: normal;
+        font-variant: normal;
+        line-height: 1;
+        text-rendering: auto;
+      }
+
+      .fa-2x {
+        font-size: 2em;
+      }
+
+      .site-header {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 10;
+      }
+
     </style>
   </head>
   <body>
-    <h1 style="text-align: center;">D-Inner</h1>
-    <p style="text-align: center;">Your inner secret about diet.</p>
+    <header class="site-header">
+      <div class="header lr-padding">
+        <div class="header">
+          <div style="height: 0px">
+            <h1>D-Inner</h1>
+            <p>Your inner secret about diet.</p>
+          </div>
+          <div class="head-nav"> <ul> </ul></div>
+          <div class="header-right">
+            <div class="head-search">
+              <div class="search">
+                <form action="/search" method="GET" class="head-search-form">
+                  <input type="text" class="head-search-area" name="query" placeholder="Cari..." />
+                  <button type="submit" class="head-search-submit">
+                    <i class="fa fa-2x" aria-hidden="true"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+    </header>
     <hr/>
     <div class="menu-list">
       <a href="menu1.html">
@@ -70,7 +210,6 @@
           <p>Menu 6</p>
         </div>
       </a>
-      
     </div>
   </body>
 </html>
