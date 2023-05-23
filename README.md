@@ -50,7 +50,6 @@ def handle_request(request)
 ```
 ### Contributor
 TUBES JARINGAN KOMPUTER
-Anggota :
 * Agustinus David
 * Novia Natasya
 * Nadine Zuhdan Azra
