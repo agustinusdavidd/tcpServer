@@ -19,8 +19,10 @@ Langkah pertama yang kami lakukan ialah melakukan import library yang kami butuh
 `import socket`
 
 Selanjutnya kami membuat fungsi server tcp yang dipanggil melalui fungsi main
+```Python
 if __name__ == "__main__" :
     tcp_server()
+```
 
 ```Python
 def tcp_server()
