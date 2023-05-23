@@ -21,7 +21,7 @@ def tcp_server() :
 
         response = handle_request(request)
         try:
-            for i in response[1]:   #modified by nadine
+            for i in response[1]:
                 sock_client.send(i.encode())
             if response[0] == "media":
                 for i in response[2]:
@@ -90,7 +90,7 @@ def handle_request(request) :
     return response
 
 def contentType(file) :
-    type = file.split('.')[-1] # parsing tipe file yang diminta untuk mengisi header content-type
+    type = file.split('.')[-1]                                                  # parsing tipe file yang diminta untuk mengisi header content-type
     if type=="html":
         return "text/html"
     elif type=="jpg":
