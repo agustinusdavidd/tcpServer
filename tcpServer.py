@@ -44,7 +44,8 @@ def handle_request(request) :
     try:
         splitRequest = request.split()                                          #["GET","/bla.html"]            #.split("/")[-1]    } modified by nadine
         fileReq = splitRequest[1]                                               #"/bla.html"                    # } mendapatkan nama file yang diminta oleh client
-        fileReq = fileReq[1::]                                                  #"bla.html"                     # } menghapus / di bagian awal file
+        fileReq = fileReq[1::]
+        print(fileReq)                                                  #"bla.html"                     # } menghapus / di bagian awal file
         if fileReq == "":
             fileReq = "index.html"
         elif fileReq[0:6] == "search":
@@ -92,7 +93,8 @@ def handle_request(request) :
     return response
 
 def contentType(file) :
-    type = file.split('.')[-1]                                                  # parsing tipe file yang diminta untuk mengisi header content-type
+    type = file.split('.')[-1]
+    print(type)                                                  # parsing tipe file yang diminta untuk mengisi header content-type
     if type=="html":
         return "text/html"
     elif type=="jpg":
