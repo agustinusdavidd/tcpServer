@@ -4,6 +4,44 @@
     <title>Menu Makanan</title>
     <link rel="icon" type="image/x-icon" href="favicon.webp">
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      .html {
+        font-size: 62.5%;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      /*................... /Utils Classes/ ...................*/
+      .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: auto;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.5em 1.5em;
+        text-decoration: none;
+        border-radius: 50px;
+        cursor: pointer;
+        outline: none;
+        margin-top: 1em;
+        text-transform: uppercase;
+        font-weight: small;
+      }
+
+      .btn-primary {
+        color: #fff;
+        background: #16a083;
+      }
+
+      .btn-primary:hover {
+        background: #117964;
+        transition: background 0.3s ease-in-out;
+      }
+
       .menu-item {
         display: inline-block;
         width: 187px;
@@ -26,13 +64,6 @@
         display: flex;
         text-align: right;
       }
-
-      .menu-list {
-        display: flex;
-        justify-content: left;
-        flex-wrap: wrap;
-      }
-
       #new
       .header{
         height: 66px;
@@ -139,13 +170,110 @@
       }
 
       .site-header {
-        position: -webkit-sticky;
-        position: sticky;
         left: 0;
         right: 0;
         top: 0;
         z-index: 10;
       }
+
+      /*................... /Food Category/ ...................*/
+      #food {
+        padding: 5rem 0 10rem 0;
+      }
+
+      #food h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 400;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        color: #555;
+      }
+
+      .food-container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .food-container img {
+        display: block;
+        width: 100%;
+        margin: auto;
+        max-height: 300px;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .img-container {
+        margin: 0 1rem;
+        position: relative;
+      }
+
+      .img-content {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        z-index: 2;
+        text-align: center;
+        transition: all 0.3s ease-in-out 0.1s;
+      }
+
+      .img-content h3 {
+        color: #fff;
+        font-size: 2.2rem;
+      }
+
+      .img-content a {
+        font-size: 1.2rem;
+      }
+
+      .img-container::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.871);
+        opacity: 0;
+        z-index: 1;
+
+        transform: scaleY(0);
+        transform-origin: 100% 100%;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .img-container:hover::after {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+
+      .img-container:hover .img-content {
+        opacity: 1;
+        top: 40%;
+      }
+
+      /*................... /Food/ ...................*/
+      .food-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .food-type:not(:last-child) {
+        margin-bottom: 3rem;
+      }
+
+      .food-type {
+        box-shadow: 5px 5px 10px 0 #aaa;
+      }
+
+      .img-container {
+        margin: 0;
+      }
+    
 
     </style>
   </head>
@@ -172,50 +300,73 @@
           </div>
       </div>
     </header>
+
     <hr/>
-    <div class="menu-list">
-      <a href="menu1.html">
-        <div class="menu-item">
-          <img src="https://asset.kompas.com/crops/kfQ22acQbcFGMH39-eMBGkX1wQw=/0x342:665x785/750x500/data/photo/2021/01/17/6003c30bcebe8.jpg" alt="Tahu cabe garam">
-          <h3>Tahu Cabe Garam</h3>
-          <p>Menu 1</p>
+
+    <section id="food">
+      <h2>Food</h2>
+      <div class="food-container container">
+        <div class="food-type tahu">
+          <div class="img-container">
+            <img src="https://asset.kompas.com/crops/kfQ22acQbcFGMH39-eMBGkX1wQw=/0x342:665x785/750x500/data/photo/2021/01/17/6003c30bcebe8.jpg" alt="Tahu cabe garam">
+            <div class="img-content">
+              <h3>Tahu Cabe Garam</h3>
+              <a href="menu1.html" class="btn btn-primary" target="blank">Learn More</a>
+            </div>
+          </div>
         </div>
-      </a>
-      <a href="menu2.html">
-        <div class="menu-item">
-          <img src="https://www.masakapahariini.com/wp-content/uploads/2022/03/nasi-goreng-rempah.jpg" alt="Nasi Goreng">
-          <h3>Nasi Goreng</h3>
-          <p>Menu 2</p>
+
+        <div class="food-type nasigr">
+          <div class="img-container">
+            <img src="https://www.masakapahariini.com/wp-content/uploads/2022/03/nasi-goreng-rempah.jpg" alt="Nasi Goreng">
+            <div class="img-content">
+              <h3>Nasi Goreng Rempah</h3>
+              <a href="menu2.html" class="btn btn-primary" target="blank">Learn More</a>
+            </div>
+          </div>
         </div>
-      </a>
-      <a href="menu3.html">
-        <div class="menu-item">
-          <img src="https://www.masakapahariini.com/wp-content/uploads/2019/08/kimchi.jpg" alt="Kimchi">
-          <h3>Kimchi</h3>
-          <p>Menu 3</p>
+
+        <div class="food-type kimchi">
+          <div class="img-container">
+            <img src="https://www.masakapahariini.com/wp-content/uploads/2019/08/kimchi.jpg" alt="Kimchi">
+            <div class="img-content">
+              <h3>Kimchi</h3>
+              <a href="menu3.html" class="btn btn-primary" target="blank">Learn More</a>
+            </div>
+          </div>
         </div>
-      </a>
-      <a href="menu4.html">
-        <div class="menu-item">
-          <img src="https://kbu-cdn.com/dk/wp-content/uploads/beef-burger-special.jpg" alt="Beef Burger Special">
-          <h3>Beef Burger Special</h3>
-          <p>Menu 4</p>
+
+        <div class="food-type burger">
+          <div class="img-container">
+            <img src="https://kbu-cdn.com/dk/wp-content/uploads/beef-burger-special.jpg" alt="Beef Burger Special">
+            <div class="img-content">
+              <h3>Beef Burger Special</h3>
+              <a href="menu4.html" class="btn btn-primary" target="blank">Learn More</a>
+            </div>
+          </div>
         </div>
-      </a>
-      <a href="menu5.html">
-        <div class="menu-item">
-          <img src="https://images.tokopedia.net/img/KRMmCm/2022/8/5/4c415ed5-74c4-4e7b-9da7-441584425124.jpg" alt="Seblak">
-          <h3>Chickini</h3>
-          <p>Menu 5</p>
+
+        <div class="food-type seblak">
+          <div class="img-container">
+            <img src="https://images.tokopedia.net/img/KRMmCm/2022/8/5/4c415ed5-74c4-4e7b-9da7-441584425124.jpg" alt="Seblak">
+            <div class="img-content">
+              <h3>Seblak</h3>
+              <a href="menu5.html" class="btn btn-primary" target="blank">Learn More</a>
+            </div>
+          </div>
         </div>
-      </a>
-      <a href="menu6.html">
-        <div class="menu-item">
-          <img src="https://i0.wp.com/resepkoki.id/wp-content/uploads/2018/02/Resep-Sop-Ceker.jpg?fit=500%2C471&ssl=1" alt="Sop Ceker">
-          <h3>Sop Ceker</h3>
-          <p>Menu 6</p>
+
+        <div class="food-type ceker">
+          <div class="img-container">
+            <img src="https://i0.wp.com/resepkoki.id/wp-content/uploads/2018/02/Resep-Sop-Ceker.jpg?fit=500%2C471&ssl=1" alt="Sop Ceker">
+            <div class="img-content">
+              <h3>Sop Ceker</h3>
+              <a href="menu6.html" class="btn btn-primary" target="blank">Learn More</a>
+            </div>
+          </div>
         </div>
-      </a>
-    </div>
+
+      </div>
+    </section>
   </body>
 </html>
