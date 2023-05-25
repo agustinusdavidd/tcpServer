@@ -50,6 +50,6 @@ def handle_request(request)
 ```
 ### Contributor
 TUBES JARINGAN KOMPUTER
-* Agustinus David
-* Novia Natasya
-* Nadine Zuhdan Azra
+* Agustinus David (agustinusdavidd)
+* Novia Natasya (nat5via)
+* Muhammad Nadine Zuhdan Azra (Crafttex)
