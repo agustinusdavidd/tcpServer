@@ -111,6 +111,8 @@ def contentType(file) :
         return "text/css"
     elif type =="js":
         return "application/javascript"
+    elif type =="json":
+        return "application/json"
     else:
         return "text/plain"
 
