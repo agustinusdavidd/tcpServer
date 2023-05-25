@@ -59,6 +59,245 @@
         height: 120px;
         object-fit: cover;
       }
+ HEAD
+      
+      .menu-list {
+        width: 50%;
+        margin: auto;
+        padding-left: 12%;
+      }
+
+      .button {
+        border: 2px solid red;
+        color: black;
+        background-color: white;
+        width: fit-content;
+        min-height: 24px;
+        margin: 4px 2px;
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+        transition-duration: 0.2s;
+      }
+
+      .button:hover {
+        background-color: red;
+        color: white;
+      }
+
+      .search-container {
+        display: flex;
+        text-align: right;
+      }
+      #new
+      .header{
+        height: 66px;
+        background-color: #fff;
+        box-shadow: 0 1px 5px 0 rgba(0,0,0,.05);
+        position: relative;
+        width: 100%;
+        top: 0;
+        z-index: 12;
+        text-align: center;
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        align-items: center;
+        -webkit-align-items: center;
+      }
+
+      .lr-padding {
+        padding-left: 2%;
+        padding-right: 2%;
+      }
+      .head-nav {
+        -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+      }
+
+      .head-search
+      .search {
+        width: 350px;
+        margin: 10px 8px;
+        height: 40px;
+        position: relative;
+        transition: all 200ms ease-out;
+        display: inline-block;
+        float: none;
+        text-align: right;
+      }
+
+      .head-search-form {
+        background-color: #eef0f3;
+        border-radius: 32px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding: 0 5px;
+      }
+
+      .head-search-submit {
+        width: 36px;
+        height: 36px;
+        background-color: inherit;
+        border: 0;
+        padding: 0;
+        font-size: 9px;
+        color: #bdc2ce;
+      }
+
+      .head-search-area {
+        font-size: 17px;
+        height: 40px;
+        color: #a6b0b7;
+        text-align: left;
+        width: 100%;
+        background-color: initial;
+        border: none!important;
+      }
+
+      .header-right {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex: 1 1 0;
+        -ms-flex: 1 1 0;
+        flex: 1 1 0;
+        -ms-flex-pack: end;
+        -webkit-justify-content: flex-end;
+        justify-content: flex-end;
+        align-items: center;
+        -webkit-align-items: center;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .fa {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: var(--fa-display,inline-block);
+        font-style: normal;
+        font-variant: normal;
+        line-height: 1;
+        text-rendering: auto;
+      }
+
+      .fa-2x {
+        font-size: 2em;
+      }
+
+      .site-header {
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 10;
+      }
+
+      /*................... /Food Category/ ...................*/
+      #food {
+        padding: 5rem 0 10rem 0;
+      }
+
+      #food h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 400;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        color: #555;
+      }
+
+      .food-container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .food-container img {
+        display: block;
+        width: 100%;
+        margin: auto;
+        max-height: 300px;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .img-container {
+        margin: 0 1rem;
+        position: relative;
+      }
+
+      .img-content {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        z-index: 2;
+        text-align: center;
+        transition: all 0.3s ease-in-out 0.1s;
+      }
+
+      .img-content h3 {
+        color: #fff;
+        font-size: 2.2rem;
+      }
+
+      .img-content a {
+        font-size: 1.2rem;
+      }
+
+      .img-container::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.871);
+        opacity: 0;
+        z-index: 1;
+
+        transform: scaleY(0);
+        transform-origin: 100% 100%;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .img-container:hover::after {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+
+      .img-container:hover .img-content {
+        opacity: 1;
+        top: 40%;
+      }
+
+      /*................... /Food/ ...................*/
+      .food-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .food-type:not(:last-child) {
+        margin-bottom: 3rem;
+      }
+
+      .food-type {
+        box-shadow: 5px 5px 10px 0 #aaa;
+      }
+
+      .img-container {
+        margin: 0;
+      }
     </style>
   </head>
   <body>
@@ -149,8 +388,18 @@
             </div>
           </div>
         </div>
+<<<<<<< HEAD
       </a>
-      
+      <div class="menu-list">
+        <a href="hehe.html">
+          <button class="button">Click for 404 error xd</button>
+        </a>
+      </div>
     </div>
+=======
+
+      </div>
+    </section>
+>>>>>>> 996b41a4e42a27a6fde5540084aceced18e59665
   </body>
 </html>
