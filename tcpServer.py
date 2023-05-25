@@ -1,5 +1,5 @@
 import socket
-#oleh david
+
 def tcp_server() :
     SERVER_HOST = "127.0.0.1"
     SERVER_PORT = 8081
@@ -19,11 +19,9 @@ def tcp_server() :
         request = sock_client.recv(1024).decode()
         print("From Client : " + request)
 
-        response = handle_request(request) #modified by nadine
-        #response = "From Server : " + request
-        #sock_client.send(response.encode()) #modified by nadine
+        response = handle_request(request)
         try:
-            for i in response[1]:   #modified by nadine
+            for i in response[1]:
                 sock_client.send(i.encode())
             if response[0] == "media":
                 for i in response[2]:
@@ -40,59 +38,50 @@ def tcp_server() :
         sock_client.close()
 
     sock_server.close()
-#oleh david
-def handle_request(request) :
-    #spliRequest = request.split()#.split("/")[-1]    } modified by nadine
-    #fileReq = spliRequest[1]                        # } mendapatkan nama file yang diminta oleh client
-    #fileReq = fileReq[1::]                      # } menghapus / di bagian awal file
 
-    #if fileReq == "":
-    #    fileReq = "web_page.html"
+def handle_request(request) :
     flag = "text"
     try:
-        splitRequest = request.split()  #["GET","/bla.html"]            #.split("/")[-1]    } modified by nadine
-        fileReq = splitRequest[1]       #"/bla.html"                 # } mendapatkan nama file yang diminta oleh client
-        fileReq = fileReq[1::]          #"bla.html"           # } menghapus / di bagian awal file
+        splitRequest = request.split()                                          #["GET","/bla.html"]            #.split("/")[-1]    } modified by nadine
+        fileReq = splitRequest[1]                                               #"/bla.html"                    # } mendapatkan nama file yang diminta oleh client
+        fileReq = fileReq[1::]                                                  #"bla.html"                     # } menghapus / di bagian awal file
         if fileReq == "":
             fileReq = "index.html"
         type = contentType(fileReq)
-    #modified by nadine
+
         if type.split('/')[0] != "text":
-            with open(fileReq, 'rb') as requestedFile: # membuka file yang diminta
+            with open(fileReq, 'rb') as requestedFile:                          # membuka file yang diminta
                 content_file = requestedFile.readlines()
                 flag = "media"
                 response_line = "HTTP/1.1 200 OK\r\n"
-                content_type = "Content-Type: " + type + "\r\n\r\n" # header untuk memberi tahu client tipe file yang akan diterima
+                content_type = "Content-Type: " + type + "\r\n\r\n"             # header untuk memberi tahu client tipe file yang akan diterima
                 message_body = content_file
                 length = 0
                 for i in content_file:
                     length += len(i)
-                content_length = "Content-Length: " + str(length) + "\r\n" # header agar browser tahu kapan file yang diminta selesai dikirimkan untuk bentuk selain text html
+                content_length = "Content-Length: " + str(length) + "\r\n"      # header agar browser tahu kapan file yang diminta selesai dikirimkan untuk bentuk selain text html
             
         else:
-            with open(fileReq, 'r') as requestedFile: # membuka file yang diminta
+            with open(fileReq, 'r') as requestedFile:                           # membuka file yang diminta
                 content_file = requestedFile.readlines()
                 response_line = "HTTP/1.1 200 OK\r\n"
-                content_type = "Content-Type: " + type + "\r\n\r\n" # header untuk memberi tahu client tipe file yang akan diterima
+                content_type = "Content-Type: " + type + "\r\n\r\n"             # header untuk memberi tahu client tipe file yang akan diterima
                 content_length = ""
                 message_body = content_file
     
-    except FileNotFoundError as error: # error handling apabila file yang diminta tidak ditemmukan
+    except FileNotFoundError as error:                                          # error handling apabila file yang diminta tidak ditemmukan
         response_line = "HTTP/1.1 404 Not Found\r\n"
         content_type = "Content-Type: text/html\r\n\r\n"
-        with open("Error404.html", 'r') as requestedFile:
-            message_body = requestedFile.readlines()
-        #message_body = "<html><body><h1>404 Not Found</h1></body></html>"
+        message_body = "<html><body><h1>404 Not Found</h1></body></html>"
         content_length = ""
         print(error)
-    except Exception as error: #oleh nadine
+    except Exception as error:
         response_line = "HTTP/1.1 400 Bad Request\r\n"
         content_type = "Content-Type: text/html\r\n\r\n"
         message_body = "<html><body><h1>400 Bad Request</h1></body></html>"
         content_length = ""
         print(request.split())
         print("\n",error)
-    #oleh nadine
     response = []
     response.append(flag)
     response.append(response_line + content_length + content_type)
@@ -100,9 +89,8 @@ def handle_request(request) :
     response.append(message_body)
     return response
 
-#oleh nadine
 def contentType(file) :
-    type = file.split('.')[-1] # parsing tipe file yang diminta untuk mengisi header content-type
+    type = file.split('.')[-1]                                                  # parsing tipe file yang diminta untuk mengisi header content-type
     if type=="html":
         return "text/html"
     elif type=="jpg":
