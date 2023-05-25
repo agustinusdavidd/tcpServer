@@ -47,9 +47,11 @@ def handle_request(request) :
         fileReq = fileReq[1::]                                                  #"bla.html"                     # } menghapus / di bagian awal file
         if fileReq == "":
             fileReq = "index.html"
+        elif fileReq[0:6] == "search":
+            fileReq = "search.html"
         type = contentType(fileReq)
 
-        if type.split('/')[0] != "text":
+        if type.split('/')[0] != ("text" or "application"):
             with open(fileReq, 'rb') as requestedFile:                          # membuka file yang diminta
                 content_file = requestedFile.readlines()
                 flag = "media"
@@ -60,7 +62,7 @@ def handle_request(request) :
                 for i in content_file:
                     length += len(i)
                 content_length = "Content-Length: " + str(length) + "\r\n"      # header agar browser tahu kapan file yang diminta selesai dikirimkan untuk bentuk selain text html
-            
+
         else:
             with open(fileReq, 'r') as requestedFile:                           # membuka file yang diminta
                 content_file = requestedFile.readlines()
@@ -72,7 +74,7 @@ def handle_request(request) :
     except FileNotFoundError as error:                                          # error handling apabila file yang diminta tidak ditemmukan
         response_line = "HTTP/1.1 404 Not Found\r\n"
         content_type = "Content-Type: text/html\r\n\r\n"
-        message_body = "<html><body><h1>404 Not Found</h1></body></html>"
+        message_body = "<html><body><h1>404 Not Found</h1></body></html>"   
         content_length = ""
         print(error)
     except Exception as error:
@@ -105,6 +107,8 @@ def contentType(file) :
         return "image/x-icon"
     elif type =="css":
         return "text/css"
+    elif type =="js":
+        return "application/javascript"
     else:
         return "text/plain"
 

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Tahu Cabe Garam",
+        "image": "https://asset.kompas.com/crops/kfQ22acQbcFGMH39-eMBGkX1wQw=/0x342:665x785/750x500/data/photo/2021/01/17/6003c30bcebe8.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Nasi Goreng Rempah",
+        "image": "https://www.masakapahariini.com/wp-content/uploads/2022/03/nasi-goreng-rempah.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Kimchi",
+        "image": "https://www.masakapahariini.com/wp-content/uploads/2019/08/kimchi.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Beef Burger Special",
+        "image": "https://kbu-cdn.com/dk/wp-content/uploads/beef-burger-special.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Seblak",
+        "image": "https://images.tokopedia.net/img/KRMmCm/2022/8/5/4c415ed5-74c4-4e7b-9da7-441584425124.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Sop Ceker",
+        "image": "https://i0.wp.com/resepkoki.id/wp-content/uploads/2018/02/Resep-Sop-Ceker.jpg?fit=500%2C471&ssl=1"
+    }
+]
