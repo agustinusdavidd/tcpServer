@@ -44,13 +44,13 @@ def handle_request(request) :
     try:
         splitRequest = request.split()                                          #["GET","/bla.html"]            #.split("/")[-1]    } modified by nadine
         fileReq = splitRequest[1]                                               #"/bla.html"                    # } mendapatkan nama file yang diminta oleh client
-        fileReq = fileReq[1::]
-        print(fileReq)                                                  #"bla.html"                     # } menghapus / di bagian awal file
-        if fileReq == "":
+        fileReq = fileReq[1::]                                                  #"bla.html"                     # } menghapus / di bagian awal file
+        if fileReq == "":                                                       # mengarahkan ke home page
+            print(fileReq)                                                          
             fileReq = "index.html"
-        elif fileReq[0:6] == "search":
+        elif fileReq[0:6] == "search":                                          # mengarahkan ke search page
             fileReq = "search.html"
-        type = contentType(fileReq)
+        type = contentType(fileReq)                                             # mengambil file type
 
         if type.split('/')[0] != ("text" or "application"):
             with open(fileReq, 'rb') as requestedFile:                          # membuka file yang diminta
@@ -78,7 +78,7 @@ def handle_request(request) :
         message_body = "<html><body><h1>404 Not Found</h1></body></html>"   
         content_length = ""
         print(error)
-    except Exception as error:
+    except Exception as error:                                                  # error handling untuk error lainnya
         response_line = "HTTP/1.1 400 Bad Request\r\n"
         content_type = "Content-Type: text/html\r\n\r\n"
         message_body = "<html><body><h1>400 Bad Request</h1></body></html>"
