@@ -34,5 +34,11 @@
         "name": "Sop Ceker",
         "image": "https://i0.wp.com/resepkoki.id/wp-content/uploads/2018/02/Resep-Sop-Ceker.jpg?fit=500%2C471&ssl=1",
         "link": "menu6.html"
+    },
+    {
+        "id": 7,
+        "name": "Chickini?!?!",
+        "image": "chickini.jpg",
+        "link": "https://www.youtube.com/watch?v=P5R0FbEQBVM"
     }
 ]

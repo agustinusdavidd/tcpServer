@@ -1,4 +1,5 @@
 import socket
+import _thread
 
 def tcp_server() :
     SERVER_HOST = "127.0.0.1"
@@ -14,32 +15,35 @@ def tcp_server() :
     print("Server ready...\n")
 
     while True:
-        sock_client, client_address = sock_server.accept()
+        sock_client, client_address = sock_server.accept()                      # menerima request dari client
 
-        request = sock_client.recv(1024).decode()
-        print("From Client : " + request)
+        _thread.start_new_thread(handle_request, (sock_client, client_address)) # memulai thread baru untuk mengurus request
+        
 
-        response = handle_request(request)
-        try:
-            for i in response[1]:
+    sock_server.close()
+
+def send_response(response, sock_client, request, client_address) :
+    try:
+            for i in response[1]:                                               # mengirim header
                 sock_client.send(i.encode())
             if response[0] == "media":
                 for i in response[2]:
-                    sock_client.send(i)
+                    sock_client.send(i)                                         # mengirim file yang diminta (media)
             else:
                 for i in response[2]:
-                    sock_client.send(i.encode())
-                sock_client.send("\r\n".encode())
-        except Exception as error:
+                    sock_client.send(i.encode())                                # mengirim file yang diminta (teks)
+                sock_client.send("\r\n".encode())                               # mengirim penutup
+    except Exception as error:
             print("[ERROR]", error)
             print("From Client : " + request)
             print("Client IP : ", client_address)
             print("Response : ", response)
-        sock_client.close()
+    sock_client.close()
 
-    sock_server.close()
-
-def handle_request(request) :
+def handle_request(sock_client, client_address) :
+    request = sock_client.recv(1024).decode()
+    print("From Client : " + request)
+    print(sock_client)
     flag = "text"
     try:
         splitRequest = request.split()                                          #["GET","/bla.html"]            #.split("/")[-1]    } modified by nadine
@@ -90,7 +94,8 @@ def handle_request(request) :
     response.append(response_line + content_length + content_type)
     print(response[1])
     response.append(message_body)
-    return response
+    _thread.start_new_thread(send_response, (response, sock_client, request, client_address))
+    
 
 def contentType(file) :
     type = file.split('.')[-1]
