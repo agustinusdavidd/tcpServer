@@ -89,6 +89,7 @@ def handle_request(sock_client, client_address) :
         content_length = ""
         print(request.split())
         print("\n",error)
+    
     response = []
     response.append(flag)
     response.append(response_line + content_length + content_type)
