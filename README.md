@@ -48,6 +48,36 @@ Seluruh perimintaan yang dilakukan oleh user akan di handle oleh sistem
 ```Python
 def handle_request(request)
 ```
+
+didalam fungsi `handle_request(request)`
+request dari user akan diparsing
+
+`GET /<file_requested>` menjadi `['GET', '/<file_requested>']`
+
+dengan kode dibawah ini sistem akan mengirimkan response file yang diminta kepada user
+```Python
+splitRequest = request.split()
+fileReq = splitRequest[1]
+fileReq = fileReq[1::]
+if fileReq == "":
+    print(fileReq)                                                          
+    fileReq = "index.html"
+elif fileReq[0:6] == "search":
+    fileReq = "search.html"
+```
+setelah itu sistem akan memparsing tipe file yang akan digunakan untuk mengisi header content type dengan memanggil fungsi
+```Python
+def contentType(file) :
+```
+
+### Cara Menggunakan
+* Buka link [Github](https://github.com/agustinusdavidd/tcpServer) berikut
+* Lakukan clone repositori atau download file
+* Buka terminal atau IDE Python
+* Ubah direktori menjadi tempat repositori disimpan
+* Jalankan `python tcpServer.py`
+* Buka browser anda dan ketikan `localhost:8081`
+ 
 ### Contributor
 TUBES JARINGAN KOMPUTER
 * Agustinus David
