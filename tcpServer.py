@@ -2,8 +2,8 @@ import socket
 import _thread
 
 def tcp_server() :
-    SERVER_HOST = "127.0.0.1"
-    SERVER_PORT = 8081
+    SERVER_HOST = "127.0.0.1"                                                   # IP yang akan digunakan server
+    SERVER_PORT = 8081                                                          # Port yang akan digunakan server
 
     sock_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock_server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -38,7 +38,7 @@ def send_response(response, sock_client, request, client_address) :
             print("From Client : " + request)
             print("Client IP : ", client_address)
             print("Response : ", response)
-    sock_client.close()
+    sock_client.close()                                                         # menutup socket
 
 def handle_request(sock_client, client_address) :
     request = sock_client.recv(1024).decode()
