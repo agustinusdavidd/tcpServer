@@ -90,7 +90,7 @@ def handle_request(sock_client, client_address) :
         print(request.split())
         print("\n",error)
     
-    response = []
+    response = []                                                               # format list [flag, header, message_body/payload]
     response.append(flag)
     response.append(response_line + content_length + content_type)
     print(response[1])
